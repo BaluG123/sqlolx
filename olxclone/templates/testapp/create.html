@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>add item..</title>
+    <link rel="stylesheet" href="{% static "css/tweet.css"%}">
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="jumbotron" style="margin-top:30px;background:black;color:white;">
+      <h2 align=center> <i>"O<span style="color:red;">l</span>x" the best selling platform!</i> </h2>
+      </div>
+    </div>
+    <div class="conatiner">
+      <div class="jumbotron">
+        <h1><i>upload item</i></h1>
+        <p><i>in description please give your adress,contact and mail details</i></p>
+        <form enctype="multipart/form-data" method="post" class="form-group">
+          {{form.as_p}}
+          {% csrf_token %}
+          <input type="submit" name="" value="upload" class="btn btn-success btn-sm">
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </body>
+</html>

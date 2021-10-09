@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block titel %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/tweet.css" %}">
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+    <script type="text/javascript" src={% static "js/jqery.js" %}>
+    </script>
+  </head>
+  <style media="screen">
+    .leftbar{
+      float:left;
+      width: 30%;
+    }
+    .rightbar{
+      float: left;
+      width: 70%;
+      padding:0px;
+    }
+  </style>
+  <body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/home" id="brand">OlxClone</a>
+  </div>
+</nav>
+<h1 align=center style="background:#3b5998;color:white;"> <i> <small>{{item.item_name}}</small> </i> </h1>
+<div class="leftbar">
+{% if item.item_image %}
+<div class="jumbotron" style="border-radius:0px;">
+<img src="{{item.item_image.url}}" alt="{{item.item_name}}" height="400px" width="380px" style="border:4px double #3b5998;padding:8px;">
+</div>
+{% endif %}
+</div>
+<div class="rightbar">
+  <div class="jumbotron" style="height:528px;border-radius:0px;">
+    <ul style="list-style-type: square;">
+      <li>{{item.item_name|upper}}</li>
+      <li>Price :{{item.price}} <p style="display:inline;">&#8377</p> </li>
+      <li>condition :{{item.condition}}</li>
+      <li>{{item.description|title|linebreaks}}</li><br><br><br><br>
+      <li style="list-style-type:none"><a href="#" class="btn btn-primary">chat with seller</a></li><br>
+      <li style="list-style-type:none">{% for tag in item.tags.all %}
+      <a href="#" style="width:200px;display:inline;"> #{{tag.name}}</a>
+      {% endfor %}</li>
+    </ul>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="jumbotron" style="margin-top:30px;background:black;color:white;">
+  <h2 align=center> <i>"O<span style="color:red;">l</span>x" the best selling platform!</i> </h2>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<script type="text/javascript" src={% static "js/tweet.js" %}>
+
+</script>
+</body>
+</html>
